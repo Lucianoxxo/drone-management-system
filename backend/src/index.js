@@ -3,13 +3,13 @@ const cors = require('cors');
 require('dotenv').config();
 
 const pool = require('./config/db');
-
+const droneRoutes = require('./routes/droneRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-
+app.use('/api/drones', droneRoutes);
 // Ruta de prueba: verifica que el servidor y la base de datos funcionan
 app.get('/', async (req, res) => {
   try {
